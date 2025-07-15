@@ -1,9 +1,9 @@
 <x-layout>
-    <x-slot:heading>Rezultati</x-slot:heading>
-    <div class="results">
+    <x-slot:heading>Recepti</x-slot:heading>
+    <div class="container">
         @foreach($recipes as $recipe)
             <a href="/recipes/{{ $recipe['id'] }}">
-                <div class ="result-card">
+                <div class ="card">
                     @if (isset($recipe->tags[0]['name']))
                         <i>{{ $recipe->tags[0]['name'] }}</i>
                     @else
@@ -12,7 +12,7 @@
                     <hr />
                     <br>
                     <div>
-                        <strong>{{ $recipe['name'] }}<br></strong> {{ $user->find($recipe->user_id)->name }}
+                    <strong>{{ $recipe->name }}</strong><br>{{ $user->find($recipe->user_id)->name }}
                     </div>
                 </div>
             </a>
