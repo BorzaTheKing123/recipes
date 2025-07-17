@@ -30,6 +30,8 @@
 
                             <x-form-button>Odjavi se</x-form-button>
                         </form>
+                        <x-nav-link href="/profile/{{ Auth::id() }}">Profil</x-nav-link>
+
                     @endauth
                 </div>
             </div>

@@ -6,9 +6,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laragear\TwoFactor\TwoFactorAuthentication;
+use Laragear\TwoFactor\Contracts\TwoFactorAuthenticatable;
+use Illuminate\Http\Request;
+use PhpOption\None;
 
-class User extends Authenticatable
+class User extends Authenticatable implements TwoFactorAuthenticatable
 {
+    use TwoFactorAuthentication;
+
     use HasFactory, Notifiable;
 
     /**

@@ -73,6 +73,7 @@ button {
     white-space: nowrap;
     background-color: rgba(255, 255, 255, 0.2);
     font-size: 16px;
+    color: #393939; /* Ugotovi kako se compila */
 }
 
 .center {

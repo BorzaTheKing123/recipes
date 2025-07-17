@@ -1,18 +1,21 @@
 <x-layout>
-    <x-slot:heading>Profile</x-slot:heading>
+    <x-slot:heading>Profil</x-slot:heading>
     <form method="POST" action="/profile/{{ $user->id }}">
         @csrf
         @method('PATCH')
 
         <div class="container-2">
-            <div style="grid-column: 1; grid-row: 1">
+            <div style="grid-row: 1">
+                <a href="/profile/{{ $user->id }}/2fa">2fa</a>
+            </div>
+            <div style="grid-column: 1; grid-row: 2">
                 <x-form-field>
                     <x-form-label for="name">Uporabniško ime</x-form-label>
                     <x-form-input name="name" id="name" placeholder="Npr.: Tiramisu" value="{{ $user->name }}"></x-form-input>
                     <x-form-error name="name">Mora vsebovati naslov, ki je dolg vsaj 3 črke!</x-form-error>
                 </x-form-field>
             </div>
-            <div style="grid-column: 2; grid-row: 1">
+            <div style="grid-column: 2; grid-row: 2">
                 <x-form-field>
                     <x-form-label for="name">Email</x-form-label>
                     <x-form-input name="name" id="name" placeholder="Npr.: Tiramisu" value="{{ $user->email }}"></x-form-input>
