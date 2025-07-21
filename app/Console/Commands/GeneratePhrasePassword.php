@@ -78,8 +78,8 @@ class GeneratePhrasePassword extends Command
         $s_len = 35;
 
         $password = "";
-        $hash = hash_pbkdf2("sha256", $value, $salt, 100000, 2*$num);
-        for ($x = 0; $x < 2*($num - 1); $x += 2) {
+        $hash = hash_pbkdf2("sha256", $value, $salt, 100000, intval(2*$length/$factor));
+        for ($x = 0; $x < 2*(intval($length/$factor) - 1); $x += 2) {
             $value = "";
 
             for ($y = 0; $y < 2; $y++) {
