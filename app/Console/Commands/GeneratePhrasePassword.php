@@ -11,7 +11,7 @@ class GeneratePhrasePassword extends Command
      *
      * @var string
      */
-    protected $signature = 'phrase:password {value?} {salt?} {num?}';
+    protected $signature = 'ppassword:generate {value?} {salt?} {num?}';
 
     /**
      * The console command description.
@@ -32,10 +32,6 @@ class GeneratePhrasePassword extends Command
         $num = intval($this->argument('num'));
         $iterations = '600000';
 
-        if (! $salt) {
-            $salt = $this->ask('Enter a salt. Default are random bytes ->', random_bytes(16));
-        }
-
         while (! in_array($value, $this->values)) {
             $value = $this->ask('Enter a value (allowed values are saved in $value. For test you can use a ');
         }
@@ -44,6 +40,7 @@ class GeneratePhrasePassword extends Command
         $json_array  = json_decode(fread($f, filesize("slovenske_besede_fran.json")), true);
         $elementCount  = count($json_array["besede"]);
 
+        // Število zaporednih šestnajstiških števil
         $factor = intval(ceil(log($elementCount, 2) / 4));
 
         if (! $num) {
@@ -79,9 +76,9 @@ class GeneratePhrasePassword extends Command
 
         $password = "";
         $hash = hash_pbkdf2("sha256", $value, $salt, 100000, intval(2*$length/$factor));
-        for ($x = 0; $x < 2*(intval($length/$factor) - 1); $x += 2) {
+        for ($x = 0; $x < 2 * (intval($length/$factor) - 1); $x += 2) {
+            
             $value = "";
-
             for ($y = 0; $y < 2; $y++) {
                 $value = $value . $hash[$x + $y];
             }
