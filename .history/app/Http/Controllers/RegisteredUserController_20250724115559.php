@@ -13,6 +13,6 @@ class RegisteredUserController extends Controller
 
     public function store()
     {
-        return (new EditUsersFeature())->store();
+        return (new EditusersFeature())->store();
     }
 }

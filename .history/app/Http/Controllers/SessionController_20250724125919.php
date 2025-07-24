@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Features\users\EditusersFeature;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +14,7 @@ class SessionController extends Controller
 
     public function login(Request $request)
     {
-        return (new EditusersFeature())->login($request);
+        
     }
 
     public function edit(Int $id) {
@@ -26,6 +25,7 @@ class SessionController extends Controller
 
     public function destroy()
     {
-        return (new EditusersFeature())->logout();
+        Auth::logout();
+        return redirect('/');
     }
 }

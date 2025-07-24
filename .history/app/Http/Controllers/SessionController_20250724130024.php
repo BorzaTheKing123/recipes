@@ -26,6 +26,7 @@ class SessionController extends Controller
 
     public function destroy()
     {
-        return (new EditusersFeature())->logout();
+        Auth::logout();
+        return redirect('/');
     }
 }
