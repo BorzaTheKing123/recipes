@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Features\users\EditusersFeature;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Features\users\LoginUsersFeature;
+use App\Features\users\LogoutUsersFeature;
 
-class SessionController extends Controller
+class LoginedUserController extends Controller
 {
     public function create()
     {
@@ -15,7 +16,7 @@ class SessionController extends Controller
 
     public function login(Request $request)
     {
-        return (new EditusersFeature())->login($request);
+        return (new LoginUsersFeature($request))->handle();
     }
 
     public function edit(Int $id) {
@@ -26,6 +27,6 @@ class SessionController extends Controller
 
     public function destroy()
     {
-        return (new EditusersFeature())->logout();
+        return (new LogoutUsersFeature())->handle();
     }
 }

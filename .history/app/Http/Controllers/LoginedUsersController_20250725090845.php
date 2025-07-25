@@ -15,7 +15,7 @@ class LoginedUserController extends Controller
 
     public function login(Request $request)
     {
-        return (new EditusersFeature())->login($request);
+        return (new LoginUsersFeature())->login($request);
     }
 
     public function edit(Int $id) {

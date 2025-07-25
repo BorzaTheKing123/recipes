@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\RegisterUsersController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\SessionController;
+use App\Http\Controllers\LoginedUserController;
 use App\Data\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,13 +50,13 @@ Route::delete('/recipes/{recipe}', [RecipesController::class, 'destroy'])
     ->can('edit', 'recipe');
 
 
-Route::get("/register", [RegisteredUserController::class, 'create']); // Imena kontrolerjev so poljubna
-Route::post("/register", [RegisteredUserController::class, 'store']);
-Route::get("/login", [SessionController::class, 'create'])->name('login');
-Route::post("/login", [SessionController::class, 'login'])->middleware('throttle:6,1'); //store
-Route::post("/logout", [SessionController::class, 'destroy']);
+Route::get("/register", [RegisterUsersController::class, 'create']); // Imena kontrolerjev so poljubna
+Route::post("/register", [RegisterUsersController::class, 'store']);
+Route::get("/login", [LoginedUserController::class, 'create'])->name('login');
+Route::post("/login", [LoginedUserController::class, 'login'])->middleware('throttle:6,1'); //store
+Route::post("/logout", [LoginedUserController::class, 'destroy']);
 
-Route::get('/profile/{id}', [SessionController::class, 'edit'])
+Route::get('/profile/{id}', [LoginedUserController::class, 'edit'])
     ->name('edit');
 
 Route::get('/profile/{id}/2fa', [ProfileController::class, 'show'])

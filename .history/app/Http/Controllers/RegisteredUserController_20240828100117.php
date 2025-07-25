@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 
-class RegisteredUserController extends Controller
+class RegisterUsersController extends Controller
 {
     public function create()
     {

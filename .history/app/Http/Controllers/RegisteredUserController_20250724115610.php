@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Features\users\EditusersFeature;
 
-class RegisteredUserController extends Controller
+class RegisterUsersController extends Controller
 {
     public function create()
     {

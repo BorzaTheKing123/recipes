@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Laragear\TwoFactor\Facades\Auth2FA;
 
-class SessionController extends Controller
+class LoginedUserController extends Controller
 {
     public function create()
     {

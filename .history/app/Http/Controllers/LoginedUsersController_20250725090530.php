@@ -6,7 +6,7 @@ use App\Features\users\EditusersFeature;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginedUserController extends Controller
+class LoginedUsersController extends Controller
 {
     public function create()
     {

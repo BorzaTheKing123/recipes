@@ -1,19 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Domains\users;
 
+use Illuminate\Validation\Rules\Password;
 use App\Data\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\Password;
 
-class RegisterUsersController extends Controller
+class RegisterUsersJob
 {
-    public function create()
-    {
-        return view('auth.register');
-    }
-
-    public function store()
+    public function store (): mixed
     {
         $attributes = request()->validate([
             'name' => ['required', 'string', 'max:255'],

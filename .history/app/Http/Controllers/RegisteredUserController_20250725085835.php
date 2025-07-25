@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Features\users\EditusersFeature;
+
 class RegisterUsersController extends Controller
 {
     public function create()
@@ -11,6 +13,6 @@ class RegisterUsersController extends Controller
 
     public function store()
     {
-        return (new RegisterUserJob())->store();
+        return (new EditUsersFeature())->handle();
     }
 }

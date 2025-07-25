@@ -6,16 +6,16 @@ use App\Domains\users\RegisterUserJob;
 use App\Domains\users\LoginJob;
 use App\Domains\users\LogoutJob;
 
-class EditusersFeature
+class RegisterUsersFeature
 {
     public function login ($request)
     {
         return (new LoginJob($request))->login();
     }
 
-    public function store ()
+    public function handle ()
     {
-        return (new RegisterUserJob())->store();
+        return (new RegisterUserJob())->handle();
     }
 
     public function logout () {
