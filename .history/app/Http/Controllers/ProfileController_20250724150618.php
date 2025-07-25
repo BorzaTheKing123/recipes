@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Features\twofa\ConfirmTwoFactorFeature;
 use Auth;
 use Illuminate\Http\Request;
-use App\Features\twofa\Show2faCodesFeature;
+use App\Features\twofa\ShowCodesFeature;
 
 class ProfileController extends Controller
 {

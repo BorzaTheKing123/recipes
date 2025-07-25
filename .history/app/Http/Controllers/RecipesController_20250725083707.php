@@ -5,17 +5,13 @@ namespace App\Http\Controllers;
 use App\Data\Models\User;
 use Illuminate\Http\Request;
 use App\Data\Models\Recipe;
-use App\Features\recipes\validateRecipesInputFeature;
-use App\Features\recipes\StoreRecipesFeature;
-use App\Features\recipes\UpdateRecipesFeature;
-use App\Features\recipes\DestroyRecipesFeature;
-
+use App\Features\recipes\RecipesEditFeature;
 
 class RecipesController extends Controller
 {
     public function validateRecipe(Request $request)
     {
-        return (new ValidateRecipesInputFeature($request))->handle();
+        return (new RecipesEditFeature($request))->handle();
     }
 
     public function index()
@@ -39,7 +35,7 @@ class RecipesController extends Controller
 
     public function store()
     {   
-        return (new StoreRecipesFeature(RecipesController::validateRecipe(request())))->handle();
+        return (new RecipesEditFeature(RecipesController::validateRecipe(request())))->store();
     }
 
     public function edit(Recipe $recipe)
@@ -49,12 +45,12 @@ class RecipesController extends Controller
 
     public function update(Recipe $recipe)
     {   
-        return (new UpdateRecipesFeature(RecipesController::validateRecipe(request()), $recipe))
-                ->handle();
+        return (new RecipesEditFeature(RecipesController::validateRecipe(request())))
+                ->update($recipe);
     }
 
     public function destroy(Recipe $recipe)
     {
-        return (new DestroyRecipesFeature($recipe))->handle();
+        return (new RecipesEditFeature($recipe))->destroy();
     }
 }

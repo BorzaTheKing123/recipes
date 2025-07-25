@@ -11,8 +11,8 @@ class ShowCodesFeature
         //
     }
 
-    public function showCodes ()
+    public function handle()
     {
-        return (new ShowCodesJob($this->request))->showCodes();
+        return (new ShowCodesJob($this->request))->handle();
     }
 }

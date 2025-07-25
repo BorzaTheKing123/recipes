@@ -9,7 +9,7 @@ class ShowCodesJob
         //
     }
 
-    public function showCodes (): mixed
+    public function handle(): mixed
     {
         $secret = $this->request->user()->createTwoFactorAuth();
         return view('profile.2fa', [

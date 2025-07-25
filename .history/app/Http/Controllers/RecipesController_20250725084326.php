@@ -8,14 +8,13 @@ use App\Data\Models\Recipe;
 use App\Features\recipes\validateRecipesInputFeature;
 use App\Features\recipes\StoreRecipesFeature;
 use App\Features\recipes\UpdateRecipesFeature;
-use App\Features\recipes\DestroyRecipesFeature;
 
 
 class RecipesController extends Controller
 {
     public function validateRecipe(Request $request)
     {
-        return (new ValidateRecipesInputFeature($request))->handle();
+        return (new validateRecipesInputFeature($request))->handle();
     }
 
     public function index()
@@ -55,6 +54,6 @@ class RecipesController extends Controller
 
     public function destroy(Recipe $recipe)
     {
-        return (new DestroyRecipesFeature($recipe))->handle();
+        return (new RecipesEditFeature($recipe))->handle();
     }
 }

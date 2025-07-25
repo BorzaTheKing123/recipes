@@ -8,7 +8,9 @@ use App\Domains\recipes\ValidateRecipeJob;
 use App\Domains\recipes\DestroyRecipesJob;
 
 class RecipesEditFeature
-{
+{   
+
+    // Spravi 
     public function __construct(private $request)
     {
         //
@@ -17,11 +19,6 @@ class RecipesEditFeature
     public function validate ()
     {
         return (new ValidateRecipeJob($this->request))->validate();
-    }
-
-    public function store ()
-    {
-        return (new StoreRecipesJob($this->request))->store();
     }
 
     public function update ($recipe)

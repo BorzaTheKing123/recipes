@@ -15,7 +15,7 @@ class RecipesController extends Controller
 {
     public function validateRecipe(Request $request)
     {
-        return (new ValidateRecipesInputFeature($request))->handle();
+        return (new validateRecipesInputFeature($request))->handle();
     }
 
     public function index()

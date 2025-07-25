@@ -9,7 +9,7 @@ class ConfirmTwoFactorJob
         //
     }
 
-    public function handle (): mixed
+    public function confirm (): mixed
     {
         $this->request->validate(['code' => 'required|numeric' ]);
         $activated = $this->request->user()->confirmTwoFactorAuth($this->request->code);
